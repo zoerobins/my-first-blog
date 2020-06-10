@@ -12,6 +12,9 @@
 
     <body>
         <div class="page-header">
+            {% if user.is_authenticated %}
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            {% endif %}
             <h1><a href="/">Django Girls Blog</a></h1>
         </div>
 
@@ -56,6 +59,7 @@
 
     .date {
         color: #828282;
+        float: right;
     }
 
     .save {
@@ -79,6 +83,11 @@
 
     .post h2 a, .post h2 a:visited {
         color: #000000;
+    }
+
+    .btn {
+        clear: both;
+        float: right;
     }
 
 </style>
