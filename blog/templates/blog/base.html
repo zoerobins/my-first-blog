@@ -15,11 +15,11 @@
             {% if user.is_authenticated %}
                 <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
                 <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-                <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Logout</a>)</small></p>
+                <p class="top-menu2">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Logout</a>)</small></p>
             {% else %}
             <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
             {% endif %}
-            <h1><a href="/">Django Girls Blog</a></h1>
+            <h1><a href="/">Zoe's CS Blog</a></h1>
         </div>
 
         <div class="content container">
@@ -42,13 +42,13 @@
 <style type="text/css">
 
     .page-header {
-        background-color: C25100;
+        background-color: #FFC800;
         margin-top: 0;
         padding: 20px 20px 20px 40px;
     }
 
     .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
-        color: #ffffff;
+        color: #8C8C8C;
         font-size: 36pt;
         text-decoration: none;
     }
@@ -75,10 +75,18 @@
     }
 
     .top-menu, .top-menu:hover, .top-menu:visited {
-        color: #ffffff;
+        color: #8C8C8C;
         float: right;
         font-size: 26pt;
         margin-right: 20px;
+    }
+
+    .top-menu2 {
+        color: #8C8C8C;
+        float: right;
+        font-size: 15px;
+        margin-right: 20px;
+        margin-top: 10px;
     }
 
     .post {
@@ -94,8 +102,18 @@
         float: right;
     }
 
+    .btn-comment {
+        position: absolute;
+        bottom: 0px;
+        right: 15px;
+    }
+
     .comment {
         margin: 20px 0px 20px 20px;
+    }
+
+    body {
+        background-color: #FFFFFF;
     }
 
 </style>
