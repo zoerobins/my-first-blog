@@ -9,6 +9,9 @@ from .forms import PostForm, CommentForm
 def login(request):
     return render(request, 'registration/login.html')
 
+def home(request):
+    return render(request, 'homepage/home.html')
+
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
@@ -85,3 +88,9 @@ def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.delete()
     return redirect('post_detail', pk=comment.post.pk)
+
+def CV(request):
+    breakpoint()
+
+def EPQ(request):
+    return render(request, 'projects/EPQ.html')
