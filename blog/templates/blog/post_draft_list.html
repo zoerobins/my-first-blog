@@ -1,11 +1,16 @@
 {% extends 'blog/base.html' %}
 
+{% block blogicons %}
+<a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-pencil"></span></a>
+<a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+{% endblock %}
+
 {% block content %}
     {% for post in posts %}
         <div class="post">
             <p class="date">created: {{ post.created_date|date:'d-m-Y' }}</p>
             <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-            <p>{{ post.text|truncatechars:200 }}</p>
+            <p>{{ post.text|truncatechars:500 }}</p>
         </div>
     {% endfor %}
 {% endblock %}

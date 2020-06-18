@@ -1,5 +1,10 @@
 {% extends 'blog/base.html' %}
 
+{% block blogicons %}
+<a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-pencil"></span></a>
+<a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+{% endblock %}
+
 {% block content %}
     <h2>New post</h2>
     <form method="POST" class="post-form">{% csrf_token %}
@@ -7,4 +12,8 @@
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
 
+{% endblock %}
+
+{% block content2 %}
+    <a class="btn btn-default btn-back" onclick="goBack()">Back</a>
 {% endblock %}

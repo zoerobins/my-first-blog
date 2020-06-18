@@ -7,17 +7,25 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href="//fonts.googleapis.com/css?family=Economica" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script>
+        function goBack() {
+          window.history.back()
+        }
+        </script>
         <title>Zoe's CS blog</title>
     </head>
 
     <body>
         <div class="page-header">
+
             {% if user.is_authenticated %}
-                <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
-                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                {% block blogicons %}
+                {% endblock %}
                 <p class="top-menu2">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Logout</a>)</small></p>
             {% else %}
-            <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+            <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-user"></span></a>
             {% endif %}
             <!-- <h1><a href="/">Zoe's CS Blog</a></h1> -->
 
@@ -25,17 +33,22 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active add-space">
+                        <li class="nav-item add-space">
                             <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item add-space">
                             <a class="nav-link" href="/blog/">Blog</a>
                         </li>
                         <li class="nav-item add-space">
-                            <a class="nav-link" href="#">CV</a>
+                            <a class="nav-link disabled">CV</a>
                         </li>
-                        <li class="nav-item add-space">
-                            <a class="nav-link" href="/EPQ/">Projects</a>
+                        <li class="nav-item dropdown add-space">
+                            <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">Projects</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/EPQ/"><h2>EPQ</h2></a>
+                            <div class="dropdown-divider"></div>
+                                <a class="dropdown-item disabled"><h2>More coming soon!</h2></a>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -51,6 +64,13 @@
                     {% endblock %}
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-8">
+                    {% block content2 %}
+                    {% endblock %}
+                </div>
+            </div>
+
         </div>
 
 
@@ -82,12 +102,11 @@
     }
 
     .info-section {
-        width: 350px;
         height: auto;
         background-color: white;
         border: 1px solid #8C8C8C;
         border-radius: 5px;
-        padding: 5px 5px 5px 5px;
+        padding: 15px 15px 15px 15px;
         color: #555555;
     }
 
@@ -113,6 +132,7 @@
         float: right;
         font-size: 26pt;
         margin-right: 20px;
+        padding-top: 10px;
     }
 
     .top-menu2 {
@@ -121,14 +141,16 @@
         font-size: 15px;
         margin-right: 20px;
         margin-top: 10px;
+        padding-top: 10px;
     }
 
     .post {
         margin-bottom: 70px;
     }
 
-    .post h2 a, .post h2 a:visited {
+    .post h2 a, .post h2 a:visited, .post h2 {
         color: #000000;
+        font-size: 20pt;
     }
 
     .btn {
@@ -153,4 +175,27 @@
     .add-space {
         padding-right: 20px;
     }
+
+    .dropdown-menu {
+        color: #8C8C8C;
+    }
+
+    .btn-back {
+        float: left;
+        position: absolute;
+        bottom: -50;
+    }
+
+    img {
+        border-radius: 50%;
+    }
+
+    p {
+        font-size: 11pt;
+    }
+
+    .comment {
+        font-size: 10pt;
+    }
+
 </style>

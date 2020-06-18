@@ -1,5 +1,10 @@
 {% extends 'blog/base.html' %}
 
+{% block blogicons %}
+<a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-pencil"></span></a>
+<a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+{% endblock %}
+
 {% block content %}
     <div class="post">
         {% if post.published_date %}
@@ -38,4 +43,8 @@
         <p>No comments yet</p>
     {% endif %}
 
+{% endblock %}
+
+{% block content2 %}
+    <a class="btn btn-default btn-back" onclick="goBack()">Back</a>
 {% endblock %}
